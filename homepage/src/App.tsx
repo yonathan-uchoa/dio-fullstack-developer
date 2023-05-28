@@ -1,17 +1,16 @@
 import { 
-  Center,
   ChakraProvider,
-  Input,
-  Box,
-  Button
 } from '@chakra-ui/react'
-import { Login } from './components/Login/Login';
+import { Layout } from './components/Layout';
+import { Card } from './components/Card';
 
 
 function App() {
   return (
     <ChakraProvider>
-      <Login />
+      <Layout>
+        <Card />
+      </Layout>
     </ChakraProvider>
   );
 }

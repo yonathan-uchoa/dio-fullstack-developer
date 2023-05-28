@@ -2,9 +2,9 @@ import {
     Box,
     Center,
     Input,
-		Flex,
-		useColorModeValue,
-		Stack
+	Flex,
+	useColorModeValue,
+	Stack
  } from "@chakra-ui/react"
 
 import { login } from "../../services/login"
@@ -19,7 +19,7 @@ export const Login = () => {
 
 	return(
 		<Flex
-		  minH={'100vh'}
+		  minH='calc(100vh - 24px)'
 			align={'center'}
 			justify={'center'}
 			bg={useColorModeValue('gray.50', 'gray.800')}
