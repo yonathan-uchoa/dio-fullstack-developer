@@ -6,23 +6,47 @@ import {
 	useColorModeValue,
 	Stack
  } from "@chakra-ui/react"
-
-import { login } from "../../services/login"
 import { LoginButton } from "./LoginButton"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { AppContext } from "../AppContext"
+import { changeLocalStorage } from "../../services/storage"
+import LoginService from "../../services/login-service"
 
 export const Login = () => {
-	const [message, setMessage] = useState('')
+
+	const {setItemState} = useContext(AppContext)
+	const [state, setState] = useState({
+		email: '' ,
+		password: ''
+	})
 	const handleChange = (event: any) => {
-		setMessage(event.target.value)
+		setState({
+			...state,			
+			[event.target.name]: event.target.value
+		})
+	}
+	const navigate = useNavigate();
+	
+	const eventTest = async (email: string, password: string): Promise<void> => {
+		const loggedIn = await LoginService.login({email, password})
+
+		if(!loggedIn)
+			return alert('Invalid email or password!')
+
+		setItemState('user', loggedIn)
+		setItemState('isLoggedIn', 'true')
+		changeLocalStorage('isLoggedIn', 'true')
+		changeLocalStorage('userName', loggedIn)
+		navigate('/conta/1')
 	}
 
 	return(
 		<Flex
-		  minH='calc(100vh - 24px)'
 			align={'center'}
 			justify={'center'}
 			bg={useColorModeValue('gray.50', 'gray.800')}
+			flex='auto'			
 		>
 			<Box
 				rounded={'md'}
@@ -39,11 +63,21 @@ export const Login = () => {
 					<Center>
 						<h1>Faça o login</h1>
 					</Center>
-					<Input placeholder="email" type="email" width={'sm'} onChange={handleChange}/>
-					<Input placeholder="password" type="password"/>
-					<Center>
-					<LoginButton event={()=> login(message)}/>
-					</Center>
+					<Input 
+						name="email" 
+						placeholder="email" 
+						type="email" 
+						value={state.email} 
+						onChange={handleChange} 
+						width={'sm'}/>
+					<Input 
+						name="password" 
+						placeholder="password" 
+						type="password" 
+						value={state.password} 
+						onChange={handleChange} 
+						width={'sm'} />						
+					<LoginButton event={() => eventTest(state.email, state.password)} name={state.email} password={state.password} />					
 				</Stack>
 				
 			</Box>

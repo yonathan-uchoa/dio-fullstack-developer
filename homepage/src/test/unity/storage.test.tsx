@@ -1,4 +1,4 @@
-import { changeLocalStorage, createLocalStorage, getAllLocalStorage, getLocalStorage, removeLocalStorage } from "../../services/storage"
+import { changeLocalStorage, createLocalStorage, getLocalStorage, removeLocalStorage } from "../../services/storage"
 
 describe('storage', () => {
     const mockSetItem = jest.spyOn(Storage.prototype, 'setItem')
@@ -13,7 +13,7 @@ describe('storage', () => {
         expect(mockSetItem).toHaveBeenCalledWith('isLoggedIn', "false")
     })
     it('should change local storate object key', () => {
-        changeLocalStorage('isLoggedIn', true)
+        changeLocalStorage('isLoggedIn', 'true')
         expect(mockSetItem).toHaveBeenCalledWith('isLoggedIn', "true")
     })
     it('should remove an object from local storage', () => {

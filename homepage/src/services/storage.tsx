@@ -18,8 +18,8 @@ export const createLocalStorage = (): void => {
     localStorage.setItem('isLoggedIn', JSON.stringify(false))
 }
 
-export const changeLocalStorage = (item: string, setItem: any): void => {
-    localStorage.setItem(item, JSON.stringify(setItem))
+export const changeLocalStorage = (item: string, setItem: string): void => {
+    localStorage.setItem(item, setItem)
 }
 
 export const removeLocalStorage = (item: string): void => {
