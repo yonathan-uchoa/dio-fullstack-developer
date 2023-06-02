@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react"
+import { Box, Container, Flex, Heading, Stack, Text } from "@chakra-ui/react"
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
@@ -6,9 +6,9 @@ import { AppContext } from "../components/AppContext";
 function AccountInfo<Info extends {title: string, desc: string }>(obj: Info ) {
     const {title, desc, ...rest} = obj
     return(
-        <Box p={5} shadow='md' borderWidth='1px' {...rest}>
-            <Heading fontSize='2xl'>
-                {title}
+        <Box p={5} shadow={'md'} borderWidth='1px' marginTop={'2%'} marginLeft={'2%'} flex={'auto'} minW={'180px'} w={'25%'} {...rest}>
+            <Heading fontSize='2xl' >
+                {title}     
             </Heading>
             <Text mt={3} fontSize='md'>
                 {desc}
@@ -30,16 +30,13 @@ const Account = () => {
         
 
     return (
-        <Container flex='auto'>
-            <Stack
-                direction={'row'}
-                spacing={8}
-                paddingTop={'4%'}
-            >
+            <Container margin={'auto'} flex={'auto'} display='flex' flexWrap='wrap' alignContent={'flex-start'} maxW={'container.md'}> 
                 <AccountInfo title='test info' desc='description'  />
-                <AccountInfo title='More Info' desc='More description' />
-            </Stack>
-        </Container>
+                <AccountInfo title='More Info' desc='More description and more and more and more and more and more' />
+                <AccountInfo title='More Info' desc='More description and more and more and more and more and more' />
+                <AccountInfo title='More Info' desc='More description and more and more and more and more and more' />
+                <AccountInfo title='More Info' desc='More description and more and more and more and more and more' />
+            </Container>
     )
 }
 
