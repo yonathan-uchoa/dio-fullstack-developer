@@ -5,11 +5,11 @@ import { useContext } from "react"
 import { AppContext } from "./components/AppContext"
 
 const MainRoutes = () => {
-    const { isLoggedIn } = useContext(AppContext)
+    const { isLoggedIn, userId } = useContext(AppContext)
     return(
         <Routes>
-            <Route path='/' element={ <Home /> } />
-            <Route path='/conta/:id' element={ isLoggedIn ? <Account /> : <Navigate to ={"/"}/> } />
+            <Route path='/' element={ isLoggedIn ? <Navigate to={`/conta/${userId}`} />: <Home /> } />
+            <Route path= '/conta/:id' element={ isLoggedIn ? <Account /> : <Navigate to={"/"}/> } />
         </ Routes>
     )
 }

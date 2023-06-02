@@ -37,8 +37,9 @@ export const Login = () => {
 		setItemState('user', loggedIn)
 		setItemState('isLoggedIn', 'true')
 		changeLocalStorage('isLoggedIn', 'true')
-		changeLocalStorage('userName', loggedIn)
-		navigate('/conta/1')
+		changeLocalStorage('userName', loggedIn.name)
+		changeLocalStorage('userId', loggedIn.id)
+		navigate(`/conta/${loggedIn.id}`)
 	}
 
 	return(

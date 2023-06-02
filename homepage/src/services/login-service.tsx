@@ -14,7 +14,7 @@ class LoginService {
         if(email !== data.email || password !== data.password)
             return false
         
-        return data.name
+        return {name: data.name, id: data.id}
     }
 }
 

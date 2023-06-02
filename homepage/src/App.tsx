@@ -10,7 +10,7 @@ import { AppContextProvider } from './components/AppContext';
 
 
 function App() {
-  !getLocalStorage('user') && createLocalStorage()
+  !getLocalStorage('isLoggedIn') && createLocalStorage()
 
   return (
     <BrowserRouter>
