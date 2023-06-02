@@ -2,16 +2,20 @@ import {
   ChakraProvider,
 } from '@chakra-ui/react'
 import { Layout } from './components/Layout';
-import { Card } from './components/Card';
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutes from './routes';
+import './style.css';
 
 
 function App() {
   return (
-    <ChakraProvider>
-      <Layout>
-        <Card />
-      </Layout>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider >
+        <Layout>
+          <MainRoutes />
+        </Layout>
+      </ChakraProvider>
+    </BrowserRouter>
   );
 }
 
