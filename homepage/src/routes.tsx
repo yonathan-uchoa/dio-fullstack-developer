@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import Account from "./pages/Account"
 import { useContext } from "react"
@@ -9,7 +9,7 @@ const MainRoutes = () => {
     return(
         <Routes>
             <Route path='/' element={ <Home /> } />
-            <Route path='/conta/:id' element={ isLoggedIn ? <Account /> : <Home /> } />
+            <Route path='/conta/:id' element={ isLoggedIn ? <Account /> : <Navigate to ={"/"}/> } />
         </ Routes>
     )
 }
