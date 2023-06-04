@@ -33,12 +33,13 @@ export const Login = () => {
 
 		if(!loggedIn)
 			return alert('Invalid email or password!')
-
-		setItemState('user', loggedIn)
+		console.log(loggedIn)
+		setItemState('userName', loggedIn.name)
 		setItemState('isLoggedIn', 'true')
 		changeLocalStorage('isLoggedIn', 'true')
 		changeLocalStorage('userName', loggedIn.name)
 		changeLocalStorage('userId', loggedIn.id)
+		console.log(loggedIn.id)
 		navigate(`/conta/${loggedIn.id}`)
 	}
 

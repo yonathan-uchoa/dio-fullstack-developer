@@ -10,11 +10,10 @@ class LoginService {
     }
     static async login({email, password}: ILogin) {
         const data: any = await api
-        console.log(data.name)
         if(email !== data.email || password !== data.password)
             return false
         
-        return {name: data.name, id: data.id}
+        return data
     }
 }
 

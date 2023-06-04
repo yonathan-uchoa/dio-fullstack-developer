@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import './Header.css'
 import { useNavigate } from 'react-router-dom' 
-import {changeLocalStorage} from '../../services/storage'
+import {changeLocalStorage, clearLocalStorage} from '../../services/storage'
 import { useContext } from 'react'
 import { AppContext } from '../AppContext'
 
@@ -37,7 +37,7 @@ export const Header = () => {
 
   const logout = () => {
     setItemState('isLoggedIn', false)
-    changeLocalStorage('isLoggedIn', 'false')
+    clearLocalStorage()
     navigate('/')
   }
   if(isLoggedIn)

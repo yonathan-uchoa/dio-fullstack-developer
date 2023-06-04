@@ -25,3 +25,7 @@ export const changeLocalStorage = (item: string, setItem: string): void => {
 export const removeLocalStorage = (item: string): void => {
     localStorage.removeItem(item)
 }
+
+export const clearLocalStorage = (): void => {
+    localStorage.clear()
+}
