@@ -2,16 +2,26 @@ import {
   ChakraProvider,
 } from '@chakra-ui/react'
 import { Layout } from './components/Layout';
-import { Card } from './components/Card';
+import { BrowserRouter } from 'react-router-dom';
+import MainRoutes from './routes';
+import './style.css';
+import { createLocalStorage, getLocalStorage } from './services/storage';
+import { AppContextProvider } from './components/AppContext';
 
 
 function App() {
+  !getLocalStorage('isLoggedIn') && createLocalStorage()
+
   return (
-    <ChakraProvider>
-      <Layout>
-        <Card />
-      </Layout>
-    </ChakraProvider>
+    <BrowserRouter>
+      <AppContextProvider>
+        <ChakraProvider >
+          <Layout>
+            <MainRoutes />
+          </Layout>
+        </ChakraProvider>
+      </AppContextProvider>
+    </BrowserRouter>
   );
 }
 

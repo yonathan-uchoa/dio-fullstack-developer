@@ -1,6 +1,8 @@
 export const Footer  = () => {
   return(
-    <div style={{position: 'absolute', backgroundColor: 'red', width: '100%', height: '24px'}}>
+    <div
+      className="footer"
+      style={{backgroundColor: 'red', width: '100%', height: '1.5em', flex: 'none'}}>
       Footer
     </div>
   )
